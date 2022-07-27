@@ -71,6 +71,65 @@ const getCardById = async (req, res) => {
     }
 }
 
+const updateBank = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Bank.findByIdAndUpdate(id, req.body, { new: true }, (err, plant) => {
+            if (err) {
+                res.status(500).send(err);
+            }
+            if (!Bank) {
+                res.status(500).send('Bank not found!');
+            }
+            return res.status(200).json(bank);
+        })
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+const deleteBank = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await Bank.findByIdAndDelete(id)
+        if (deleted) {
+            return res.status(200).send("Bank deleted");
+        }
+        throw new Error("Bank not found");
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+const updateCard = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Card.findByIdAndUpdate(id, req.body, { new: true }, (err, plant) => {
+            if (err) {
+                res.status(500).send(err);
+            }
+            if (!Card) {
+                res.status(500).send('Card not found!');
+            }
+            return res.status(200).json(card);
+        })
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+const deleteCard = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await Card.findByIdAndDelete(id)
+        if (deleted) {
+            return res.status(200).send("Card deleted");
+        }
+        throw new Error("Card not found");
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
 
 module.exports = {
     createBank,
@@ -78,7 +137,11 @@ module.exports = {
     getAllBanks, 
     getAllCards, 
     getBankById,
-    getCardById
+    getCardById, 
+    updateBank,
+    updateCard,
+    deleteBank,
+    deleteCard
 }
 
 //200 good
