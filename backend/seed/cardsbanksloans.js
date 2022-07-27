@@ -1,11 +1,11 @@
 const db = require('../db')
-const { Card, Bank } = require('../models')
+const { Bank, Card } = require('../models')
 
 // Connect to the database
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
-    const creditcards = [
+    const cards = [
     { 
         name: 'Saphire Preferred', 
         bank: 'Chase' , 
@@ -46,54 +46,54 @@ const main = async () => {
     const banks = [
         {
             name: 'Chase',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://www.creditcards.com/wp-content/uploads/chase-logo.png?v=1590601201'
         },
         {
             name: 'Citi',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://www.creditcards.com/wp-content/uploads/citi-logo.png?v=1590601201'
         },
         {
             name: 'Wells Fargo',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://www.creditcards.com/wp-content/uploads/wells-fargo-logo.png?v=1590601263'
         },
         {
             name: 'Ally',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://media.ally.com/file.php/179264/ALLY_Bank_withRegistration.jpg'
         },
         {
             name: 'Charles Schwab',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://logos-world.net/wp-content/uploads/2021/03/Charles-Schwab-Emblem.png'
         },
         {
             name: 'Capital One',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://www.creditcards.com/wp-content/uploads/CapOne-Logo.png?v=1622832589'
         },
         {
             name: 'Marcus By Goldman Sachs',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://i0.wp.com/www.logotaglines.com/wp-content/uploads/2016/11/Goldman-Sachs-Logo.jpg?resize=365%2C179'
         },
         {
             name: 'Bank of America',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://www.creditcards.com/wp-content/uploads/bank-of-america-logo.png?v=1590601190'
         },
         {
             name: 'American Express',
-            account_types: 'checking, savings',
+            accountTypes: 'checking, savings',
             image: 'https://www.creditcards.com/wp-content/uploads/american-express-logo.png?v=1590601185'
         }
 
 
     ]
 
-    await Card.insertMany(creditcards)
+    await Card.insertMany(cards)
     console.log("Created Credit Cards!")
 
     await Bank.insertMany(banks)
