@@ -1,5 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import React from 'react'
+import Header from './components/Header.js'
+import { Routes, Route } from 'react-router-dom'
+import ParkDetail from './components/ParkDetails'
+import Rides from './pages/Rides'
+import { useEffect, useState } from 'react'
+
 
 function App() {
   return (
