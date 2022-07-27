@@ -1,5 +1,4 @@
 const { Bank } = require('../models')
-
 const { Card } = require('../models')
 
 const getAllBanks = async (req, res) => {
@@ -12,7 +11,18 @@ const getAllBanks = async (req, res) => {
   }
 }
 
+const getAllCards = async (req, res) => {
+    try {
+      const cards = await Card.find({})
+      console.log(cards)
+      return res.json({ cards })
+    } catch (e) {
+      return res.send(e.message)
+    }
+  }
+
 module.exports = {
-    getAllBanks
+    getAllBanks, 
+    getAllCards
 }
 
