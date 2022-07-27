@@ -45,11 +45,40 @@ const getAllCards = async (req, res) => {
     }
   }
 
+const getBankById = async (req, res) => {
+    try {
+        const { id } = req.params; 
+        const bank = await Bank.findById(id)
+        if (bank) {
+            return res.status(200).json({ bank }); 
+        }
+        return res.status(404).send('Bank with the specified ID does not exist');
+    } catch (error) {
+        throw error
+    }
+}
+
+const getCardById = async (req, res) => {
+    try {
+        const { id } = req.params; 
+        const card = await Card.findById(id)
+        if (card) {
+            return res.status(200).json({ card }); 
+        }
+        return res.status(404).send('Card with the specified ID does not exist');
+    } catch (error) {
+        throw error
+    }
+}
+
+
 module.exports = {
     createBank,
     createCard,
     getAllBanks, 
-    getAllCards
+    getAllCards, 
+    getBankById,
+    getCardById
 }
 
 //200 good
