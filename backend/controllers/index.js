@@ -71,22 +71,22 @@ const getCardById = async (req, res) => {
     }
 }
 
-const updateBank = async (req, res) => {
-    try {
-        const { id } = req.params;
-        await Bank.findByIdAndUpdate(id, req.body, { new: true }, (err, bank) => {
-            if (err) {
-                res.status(500).send(err);
-            }
-            if (!bank) {
-                res.status(500).send('Bank not found!');
-            }
-            return res.status(200).json(bank);
-        })
-    } catch (error) {
-        throw error
-    }
-}
+// const updateBank = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         await Bank.findByIdAndUpdate(id, req.body, { new: true }, (err, bank) => {
+//             if (err) {
+//                 res.status(500).send(err);
+//             }
+//             if (!bank) {
+//                 res.status(500).send('Bank not found!');
+//             }
+//             return res.status(200).json(bank);
+//         })
+//     } catch (error) {
+//         throw error
+//     }
+// }
 
 const deleteBank = async (req, res) => {
     try {
@@ -101,22 +101,32 @@ const deleteBank = async (req, res) => {
     }
 }
 
+// const updateCard = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         await Card.findByIdAndUpdate(id, req.body, { new: true }, (err, card) => {
+//             if (err) {
+//                 res.status(500).send(err);
+//             }
+//             if (!card) {
+//                 res.status(500).send('Card not found!');
+//             }
+//             return res.status(200).json(card);
+//         })
+//     } catch (error) {
+//         throw error 
+//     }
+// }
+
 const updateCard = async (req, res) => {
     try {
-        const { id } = req.params;
-        await Card.findByIdAndUpdate(id, req.body, { new: true }, (err, card) => {
-            if (err) {
-                res.status(500).send(err);
-            }
-            if (!card) {
-                res.status(500).send('Card not found!');
-            }
-            return res.status(200).json(card);
-        })
+        const card = await Card.findByIdAndUpdate(req.params.id, req.body, { new: true})
+        res.status(200).json(card)
     } catch (error) {
-        throw error 
+        return res.status(500).send(error.message);
     }
 }
+
 
 const deleteCard = async (req, res) => {
     try {
@@ -128,6 +138,15 @@ const deleteCard = async (req, res) => {
         throw new Error("Card not found");
     } catch (error) {
         throw error 
+    }
+}
+
+const updateBank = async (req, res) => {
+    try {
+        const bank = await Bank.findByIdAndUpdate(req.params.id, req.body, { new: true})
+        res.status(200).json(bank)
+    } catch (error) {
+        return res.status(500).send(error.message);
     }
 }
 
@@ -145,4 +164,6 @@ module.exports = {
 }
 
 //200 good
+//500 Internal error - something not working within backend code, something inside our own system
+
 //404 file not found
