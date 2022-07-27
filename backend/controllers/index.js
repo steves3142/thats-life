@@ -74,7 +74,7 @@ const getCardById = async (req, res) => {
 const updateBank = async (req, res) => {
     try {
         const { id } = req.params;
-        await Bank.findByIdAndUpdate(id, req.body, { new: true }, (err, plant) => {
+        await Bank.findByIdAndUpdate(id, req.body, { new: true }, (err, bank) => {
             if (err) {
                 res.status(500).send(err);
             }
@@ -84,7 +84,7 @@ const updateBank = async (req, res) => {
             return res.status(200).json(bank);
         })
     } catch (error) {
-        return res.status(500).send(error.message);
+        throw error
     }
 }
 
@@ -97,14 +97,14 @@ const deleteBank = async (req, res) => {
         }
         throw new Error("Bank not found");
     } catch (error) {
-        return res.status(500).send(error.message);
+        throw error 
     }
 }
 
 const updateCard = async (req, res) => {
     try {
         const { id } = req.params;
-        await Card.findByIdAndUpdate(id, req.body, { new: true }, (err, plant) => {
+        await Card.findByIdAndUpdate(id, req.body, { new: true }, (err, card) => {
             if (err) {
                 res.status(500).send(err);
             }
@@ -114,7 +114,7 @@ const updateCard = async (req, res) => {
             return res.status(200).json(card);
         })
     } catch (error) {
-        return res.status(500).send(error.message);
+        throw error 
     }
 }
 
@@ -127,7 +127,7 @@ const deleteCard = async (req, res) => {
         }
         throw new Error("Card not found");
     } catch (error) {
-        return res.status(500).send(error.message);
+        throw error 
     }
 }
 
