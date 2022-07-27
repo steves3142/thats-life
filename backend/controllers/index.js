@@ -78,7 +78,7 @@ const updateBank = async (req, res) => {
             if (err) {
                 res.status(500).send(err);
             }
-            if (!Bank) {
+            if (!bank) {
                 res.status(500).send('Bank not found!');
             }
             return res.status(200).json(bank);
@@ -108,7 +108,7 @@ const updateCard = async (req, res) => {
             if (err) {
                 res.status(500).send(err);
             }
-            if (!Card) {
+            if (!card) {
                 res.status(500).send('Card not found!');
             }
             return res.status(200).json(card);
