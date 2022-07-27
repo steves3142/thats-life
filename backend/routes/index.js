@@ -13,6 +13,6 @@ router.get('/creditcards/:id', controllers.getCardById)
 router.put('/banks/:id', controllers.updateBank)
 router.put('/creditcards/:id', controllers.updateCard)
 router.delete('/banks/:id', controllers.deleteBank)
-router.delete('creditcards/:id', controllers.deleteCard)
+router.delete('/creditcards/:id', controllers.deleteCard)
 
 module.exports = router;
