@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -35,4 +35,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Header { 
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('https://static.wixstatic.com/media/f3c216_ec689f7b700d42b6acc065b1f77fcfa8~mv2.jpg/v1/fill/w_1000,h_514,al_c,q_90/f3c216_ec689f7b700d42b6acc065b1f77fcfa8~mv2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+h2 {
+  font-size: 60px;
+  justify-content: center;
+  color:white; 
 }
