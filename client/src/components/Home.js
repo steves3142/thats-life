@@ -25,6 +25,9 @@ const Home = () => {
   return (
     <div className="home">
       <div>
+        <div>{cards.name}</div>
+        <div>{cards.bank}, {cards.category}</div>
+        <div>{cards.description}</div>
         <img src={cards.image}></img>
       </div>
       {/* <div className="theme-box">
