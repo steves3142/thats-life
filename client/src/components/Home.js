@@ -23,23 +23,38 @@ const Home = () => {
 
 
   return (
-    <div className="home">
+    <><div className="home">
       <div>
         <div>{cards.name}</div>
         <div>{cards.bank}, {cards.category}</div>
         <div>{cards.description}</div>
         <img src={cards.image}></img>
+        <form>
+          <label htmlFor="issueType">Learn About :</label>
+          <select id="issueType">
+            <option value="outage"></option>
+            <option value="billing">Banks</option>
+            <option value="cancel">Credit Cards</option>
+          </select>
+          {/* <label htmlFor="subject">Subject:</label>
+          <input type="text" id="subject" />
+          <label htmlFor="message">Message</label> */}
+          {/* <textarea id="message" cols="30" rows="10"></textarea>
+          <button type="submit">Send</button> */}
+        </form>
       </div>
-      {/* <div className="theme-box">
-        {cards.map((card, i) => (
-          <div>
-            <h1>{card.name}</h1>
-            <img src={card.image} alt="" />
-          </div>
-        ))}
-      </div> */}
-    </div>
+    </div></>
   )
 }
 
 export default Home
+
+
+      {/* <div className="theme-box">
+      {cards.map((card, i) => (
+        <div>
+          <h1>{card.name}</h1>
+          <img src={card.image} alt="" />
+        </div>
+      ))}
+    </div> */}
