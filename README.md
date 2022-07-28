@@ -4,7 +4,7 @@ An app to manage and organize crucial financial decisions in your life. All ages
 
 ### Getting Started
 
-![Trello](https://trello.com/invite/b/jN9L9pY4/e902667816149e70f0ad1ef8492f6f66/thats-life) 
+Trello: https://trello.com/invite/b/jN9L9pY4/e902667816149e70f0ad1ef8492f6f66/thats-life
 
 Deployed Website: 
 
@@ -19,7 +19,7 @@ Node
 
 ![Backend](ERDforTL.jpg)
 
-![Backend](https://drive.google.com/file/d/12wlwE-F-HUcX23xF8zUCIXDOeV2INkm5/view?usp=sharing)
+Backend: https://drive.google.com/file/d/12wlwE-F-HUcX23xF8zUCIXDOeV2INkm5/view?usp=sharing
 
 
 
@@ -28,4 +28,4 @@ Node
 
 ![Frontend](compHierDiagramforTL.jpg)
 
-![Frontend](https://drive.google.com/file/d/1N51iCmnvyw81KYzM0vVw1ANMdqPiSSWw/view?usp=sharing)
+Frontend: https://drive.google.com/file/d/1N51iCmnvyw81KYzM0vVw1ANMdqPiSSWw/view?usp=sharing
