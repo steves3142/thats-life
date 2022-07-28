@@ -6,17 +6,17 @@ import axios from 'axios'
 const arr = [1, 2, 3, 4, 5, 6]
 
 const Home = () => {
-  //const [cards, setCreditCards] = useState([])
+  const [cards, setCreditCards] = useState({})
 
   //let navigate = useNavigate()
 
   useEffect(() => {
     console.log('hello')
     async function getCreditCards() {
-      console.log('helllo')
+      console.log('hello')
       const res = await axios.get(`/api/creditcards/62e0b391406736594b044361`)
       console.log(res)
-      // setCreditCards(res.data.cards)
+      setCreditCards(res.data.card)
     }
     getCreditCards()
   }, [])
@@ -24,6 +24,9 @@ const Home = () => {
 
   return (
     <div className="home">
+      <div>
+        <img src={cards.image}></img>
+      </div>
       {/* <div className="theme-box">
         {cards.map((card, i) => (
           <div>
