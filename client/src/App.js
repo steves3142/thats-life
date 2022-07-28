@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <Home/>
       <main>
       <h2>That's Life</h2>
       </main>
