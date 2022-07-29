@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 //import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { Navigate } from 'react-router-dom'
 
 //const arr = [1, 2, 3, 4, 5, 6]
 
@@ -13,28 +14,31 @@ const Home = () => {
   useEffect(() => {
     console.log('hello')
     async function getCreditCards() {
-      console.log('hello')
-      const res = await axios.get(`/api/creditcards/62e0b391406736594b044361`)
+      // console.log('hello')
+      const res = await axios.get(`/api/creditcards`)
       console.log(res)
-      setCreditCards(res.data.card)
+      setCreditCards(res.data.cards)
     }
     getCreditCards()
   }, [])
 
+  // const showCard = (card) => {
+  //   Navigate(`/creditcards/${card._id}`)
+  // }
 
   return (
     <><div className="home">
       <div>
-        <div>{cards.name}</div>
-        <div>{cards.bank}, {cards.category}</div>
-        <div>{cards.description}</div>
-        <img src={cards.image}></img>
+        {/* <div>{cards[0].name}</div>
+        <div>{cards[0].bank}, {cards[0].category}</div>
+        <div>{cards[0].description}</div>
+        <img src={cards[0].image}></img> */}
         <form>
-          <label htmlFor="issueType">Learn About :</label>
+          <label htmlFor="issueType">Learn About:</label>
           <select id="issueType">
-            <option value="outage"></option>
-            <option value="billing">Banks</option>
-            <option value="cancel">Credit Cards</option>
+            <option value="blank"></option>
+            <option value="banks">Banks</option>
+            <option value="cards">Credit Cards</option>
           </select>
           {/* <label htmlFor="subject">Subject:</label>
           <input type="text" id="subject" />
@@ -42,8 +46,16 @@ const Home = () => {
           {/* <textarea id="message" cols="30" rows="10"></textarea>
           <button type="submit">Send</button> */}
         </form>
-      </div>
-    </div></>
+        <div className="card-display-box">
+          {cards.map((card, i) => (
+          <div className="credit-card" key={i}>
+            <h1>{card.name}</h1>
+            <img src={card.image} alt="" />
+            </div>
+          ))}
+          </div>
+          </div>
+      </div></>
   )
 }
 

@@ -57,7 +57,9 @@ main {
     background-image: url('https://stylecaster.com/wp-content/uploads/2016/09/travel.jpg');
     background-size: cover;
     background-position: center;
-}
+    background-attachment: scroll;
+    overflow: hidden;
+  }
 
 h2 {
   font-size: 60px;
