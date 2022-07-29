@@ -3,6 +3,7 @@ import './App.css'
 import React from 'react'
 import Header from './components/Header.js'
 import Home from './components/Home.js'
+import BankMenu from './components/BankMenu.js'
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <Header/>
       <main>
       <h2>That's Life</h2>
       <Home/>
