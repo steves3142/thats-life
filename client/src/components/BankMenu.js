@@ -13,7 +13,7 @@ const BankMenu = () => {
       console.log('hello')
       async function getBanks() {
         console.log('hello')
-        const res = await axios.get(`/api/banks/`)
+        const res = await axios.get(`/api/banks/62e0b392406736594b044368`)
         console.log(res)
         setBanks(res.data.bank)
       }
