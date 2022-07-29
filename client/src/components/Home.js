@@ -4,10 +4,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom'
 
-//const arr = [1, 2, 3, 4, 5, 6]
-
 const Home = () => {
-  const [cards, setCreditCards] = useState({})
+  const [cards, setCreditCards] = useState([])
 
   //let navigate = useNavigate()
 
@@ -17,9 +15,13 @@ const Home = () => {
       // console.log('hello')
       const res = await axios.get(`/api/creditcards`)
       console.log(res)
-      setCreditCards(res.data.cards)
+      // setCreditCards(res.data.cards)
+      let cardsData = await res.data
+      console.log(cardsData)
+      setCreditCards(cardsData.cards)
     }
     getCreditCards()
+    console.log(cards)
   }, [])
 
   // const showCard = (card) => {

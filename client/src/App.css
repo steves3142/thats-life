@@ -57,8 +57,8 @@ main {
     background-image: url('https://stylecaster.com/wp-content/uploads/2016/09/travel.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;
-    overflow: hidden;
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
   }
 
 h2 {
@@ -66,3 +66,7 @@ h2 {
   justify-content: center;
   color:white; 
 }
+
+.card-display-box {
+  overflow-y: scroll;
+} 
