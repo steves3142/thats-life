@@ -12,23 +12,29 @@ const BankMenu = () => {
     useEffect(() => {
       console.log('hello')
       async function getBanks() {
-        console.log('hello')
-        const res = await axios.get(`/api/banks/62e0b392406736594b044368`)
+        const res = await axios.get(`/api/banks`)
         console.log(res)
-        setBanks(res.data.bank)
+        let bankData = await res.data
+        console.log(bankData)
+        setBanks(bankData.banks)
       }
       getBanks()
+      console.log(banks)
     }, [])
-  
-  
+    
     return (
-      <div className="bankmenu">
+      <><div className="bankmenu">
         <div>
-          <div>{banks.name}</div>
-          <div>{banks.accountTypes} {banks.category}</div>
-          <img src={banks.image}></img>
+        <div className="bank-display-box">
+        {banks.map((bank, i) => (
+          <div className="bank-info" key={i}>
+            <h1>{bank.name}</h1>
+            <img src={bank.image} alt="" />
+            </div>
+          ))}
+            </div>
         </div>
-      </div>
+        </div></>
     )
 }
 

@@ -12,10 +12,8 @@ const Home = () => {
   useEffect(() => {
     console.log('hello')
     async function getCreditCards() {
-      // console.log('hello')
       const res = await axios.get(`/api/creditcards`)
       console.log(res)
-      // setCreditCards(res.data.cards)
       let cardsData = await res.data
       console.log(cardsData)
       setCreditCards(cardsData.cards)
@@ -38,7 +36,7 @@ const Home = () => {
         <form>
           <label htmlFor="issueType">Learn About:</label>
           <select id="issueType">
-            <option value="blank"></option>
+            <option value="cards">Credit Cards</option>
             <option value="banks">Banks</option>
             <option value="cards">Credit Cards</option>
           </select>
