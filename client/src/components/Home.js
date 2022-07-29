@@ -38,7 +38,6 @@ const Home = () => {
           <select id="issueType">
             <option value="cards">Credit Cards</option>
             <option value="banks">Banks</option>
-            <option value="cards">Credit Cards</option>
           </select>
           {/* <label htmlFor="subject">Subject:</label>
           <input type="text" id="subject" />
