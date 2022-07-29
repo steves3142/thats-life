@@ -5,14 +5,12 @@ export default function Header() {
   return (
     <header>
           <div>
-            <ul>
-              <li>
+              <ul>
                 <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
+              </ul>
+              <ul>
                 <NavLink to="/bankmenu">Banking</NavLink>
-              </li>
-            </ul>
+              </ul>
           </div>
     </header>
 
