@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -26,7 +26,6 @@ const BankMenu = () => {
         <div>
           <div>{banks.name}</div>
           <div>{banks.accountTypes} {banks.category}</div>
-          <div>{banks.description}</div>
           <img src={banks.image}></img>
         </div>
       </div>

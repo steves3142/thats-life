@@ -1,9 +1,9 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const arr = [1, 2, 3, 4, 5, 6]
+//const arr = [1, 2, 3, 4, 5, 6]
 
 const Home = () => {
   const [cards, setCreditCards] = useState({})

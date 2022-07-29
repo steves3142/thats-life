@@ -13,12 +13,11 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      
       <main>
       <h2>That's Life</h2>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/" element={<BankMenu />} />
+        <Route exact path="/bankmenu" element={<BankMenu />} />
       </Routes>
       </main>
     </div>
