@@ -7,7 +7,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const main = async () => {
     const cards = [
     { 
-        name: 'Saphire Preferred', 
+        name: 'Sapphire Preferred', 
         bank: 'Chase' , 
         category: 'Travel', 
         description: `One of the best starting points into the travel rewards world. Earn 60,000 bonus points after you spend $4,000 on purhcases in the first 3 months`, 
