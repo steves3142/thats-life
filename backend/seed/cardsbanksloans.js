@@ -10,7 +10,7 @@ const main = async () => {
         name: 'Saphire Preferred', 
         bank: 'Chase' , 
         category: 'Travel', 
-        description: `One of the best starting points into the travel rewards world. Earn 60,000 bonus points after you spend $4,000 on purhcases in the firt 3 months  `, 
+        description: `One of the best starting points into the travel rewards world. Earn 60,000 bonus points after you spend $4,000 on purhcases in the first 3 months`, 
         image: 'https://assets-global.website-files.com/61965f8506482fa94e9922c6/61d2ce009c841755534078d9_image%2016.png' 
     },
     { 
@@ -67,7 +67,7 @@ const main = async () => {
         {
             name: 'Charles Schwab',
             accountTypes: 'checking, savings',
-            image: 'https://logos-world.net/wp-content/uploads/2021/03/Charles-Schwab-Emblem.png'
+            image: 'https://mms.businesswire.com/media/20130612005401/en/372488/5/SCHW_logo-new_whitespace.jpg'
         },
         {
             name: 'Capital One',
