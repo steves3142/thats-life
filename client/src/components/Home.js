@@ -7,7 +7,29 @@ import { Navigate } from 'react-router-dom'
 const Home = () => {
   const [cards, setCreditCards] = useState([])
 
-  //let navigate = useNavigate()
+  const initialCardForm = { 
+    name: '', 
+    bank: '',
+    category: '',
+    descripiton: '',
+    image: ''
+  }
+
+  const [formState, setFormState] = useState(initialCardForm);
+
+  // useEffect(() => {
+  //   console.log('ciao')
+  //   const getIssues = async () => {
+  //     try{ 
+  //       let res = await axios.get('/api/creditcards')
+  //       console.log(res.data)
+  //       setIssues(res.data)
+  //     } catch(err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   getIssues();
+  // }, [])
 
   useEffect(() => {
     console.log('hello')
@@ -22,28 +44,52 @@ const Home = () => {
     console.log(cards)
   }, [])
 
-  // const showCard = (card) => {
-  //   Navigate(`/creditcards/${card._id}`)
-  // }
+  const handleChange = event => {
+    setFormState({ ...formState, [event.target.id]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      let res = await axios.post(`/api/creditcards`, formState)
+      console.log('hola')
+      console.log(res.data)
+  } catch(err) {
+    console.log(err.response.data)
+  }
+    setFormState(initialCardForm);
+  };
 
   return (
     <><div className="home">
+      <form onSubmit={ handleSubmit }>
+
+        <label htmlFor="name">Credit Card Name</label>
+        <input type="text" id="name" onChange={handleChange} value={formState.name}/>
+
+        <label htmlFor="bank">Bank:</label>
+        <input type="text" id="bank" onChange={handleChange} value={formState.bank}/>
+
+        <label htmlFor="category">Category:</label>
+        <input type="text" id="category" onChange={handleChange} value={formState.category}/>
+
+        <label htmlFor="image">Image Link:</label>
+        <input type="text" id="image" onChange={handleChange} value={formState.image}/>
+
+        <label htmlFor="description">Description:</label>
+        <textarea id="description" cols="30" rows="10" onChange={handleChange} value={ formState.description }></textarea>
+        <button type="submit">Submit</button>
+
+      </form>
+
       <div>
-        {/* <div>{cards[0].name}</div>
-        <div>{cards[0].bank}, {cards[0].category}</div>
-        <div>{cards[0].description}</div>
-        <img src={cards[0].image}></img> */}
+
         <form>
           <label htmlFor="issueType">Learn About:</label>
           <select id="issueType">
             <option value="cards">Credit Cards</option>
             <option value="banks">Banks</option>
           </select>
-          {/* <label htmlFor="subject">Subject:</label>
-          <input type="text" id="subject" />
-          <label htmlFor="message">Message</label> */}
-          {/* <textarea id="message" cols="30" rows="10"></textarea>
-          <button type="submit">Send</button> */}
         </form>
         <div className="card-display-box">
           {cards.map((card, i) => (
@@ -69,3 +115,8 @@ export default Home
         </div>
       ))}
     </div> */}
+
+        //let navigate = useNavigate()
+  // const showCard = (card) => {
+  //   Navigate(`/creditcards/${card._id}`)
+  // }
