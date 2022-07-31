@@ -1,7 +1,5 @@
 const db = require('../db')
-
-const Bank = require('../models/banks')
-const Card = require('../models/creditCard')
+const { Bank, Card } = require('../models')
 
 // Connect to the database
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
