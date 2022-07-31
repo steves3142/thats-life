@@ -9,4 +9,4 @@ const Bank = new Schema(
     }
 )
 
-module.exports = Bank
+module.exports = mongoose.model('Bank', Bank)
