@@ -15,7 +15,7 @@ const createBank = async (req, res) => {
 
 const createCard = async (req, res) => {
     try {
-        const card  = await new Bank(req.body)
+        const card  = await new Card(req.body)
         await card.save()
         return res.status(201).json({
             card,
