@@ -1,5 +1,5 @@
-const { Bank } = require('../models')
-const { Card } = require('../models')
+const { Bank } = require('../models/banks.js')
+const { Card } = require('../models/creditCard.js')
 
 const createBank = async (req, res) => {
     try {
