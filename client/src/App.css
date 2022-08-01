@@ -65,6 +65,11 @@ h2 {
   color:white; 
 }
 
+h4 {
+  justify-content: center;
+  color:white; 
+}
+
 .card-display-box {
   overflow-y: scroll;
 } 
