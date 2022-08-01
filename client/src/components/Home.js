@@ -31,17 +31,16 @@ const Home = () => {
   //   getIssues();
   // }, [])
 
+  async function getCreditCards() {
+    const res = await axios.get(`/api/creditcards`)
+    console.log(res)
+    let cardsData = await res.data
+    console.log(cardsData)
+    setCreditCards(cardsData.cards)
+  }
+
   useEffect(() => {
-    console.log('hello')
-    async function getCreditCards() {
-      const res = await axios.get(`/api/creditcards`)
-      console.log(res)
-      let cardsData = await res.data
-      console.log(cardsData)
-      setCreditCards(cardsData.cards)
-    }
     getCreditCards()
-    console.log(cards)
   }, [])
 
   const handleChange = event => {
@@ -55,6 +54,13 @@ const Home = () => {
     console.log(res.data)
     setFormState(initialCardForm)
   };
+
+  const handleDelete = async (_id) => {
+    const res = await axios
+      .delete(`/api/creditcards/${_id}`)
+      .then((_res) => getCreditCards())
+      .catch((error) => console.log(error))
+  }
   
   return (
     <><div className="home">
@@ -98,6 +104,10 @@ const Home = () => {
           <div className="credit-card" key={i}>
             <h1>{card.name}</h1>
             <img src={card.image} alt="" />
+            <div className="button-div">
+              <button className="removebutton" onClick={() => {handleDelete(card._id)}}>Remove</button>
+              <button className="editbutton">Edit</button>
+            </div>
           </div>
           ))}
         </div>
