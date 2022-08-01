@@ -61,7 +61,20 @@ const Home = () => {
       .then((_res) => getCreditCards())
       .catch((error) => console.log(error))
   }
-  
+
+    // const handleUpdate = (_id, card) => {
+  //   const res = await axios.put(`/api/creditcards/${_id}`, {card} )
+  //      .then((res) =>console.log(res.status))
+  //      .catch((error) => console.log(error))
+  // }
+  let editForm = <form onSubmit={ handleSubmit }>
+            <label htmlFor="name">Credit Card Name: </label>
+            <input type="text" id="name" onChange={handleChange} value={formState.name}/>
+            <label htmlFor="image">Image Link:</label>
+            <input type="text" id="image" onChange={handleChange} value={formState.image}/>
+            <button type="submit" >Edit</button>
+            </form>
+
   return (
     <><div className="home">
       <h4>Add Your Credit Card</h4>
@@ -106,7 +119,9 @@ const Home = () => {
             <img src={card.image} alt="" />
             <div className="button-div">
               <button className="removebutton" onClick={() => {handleDelete(card._id)}}>Remove</button>
-              <button className="editbutton">Edit</button>
+              <div className="edit-options">
+                {editForm}
+              </div>
             </div>
           </div>
           ))}
