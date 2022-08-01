@@ -50,18 +50,15 @@ const Home = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      let res = await axios.post(`/api/creditcards`, formState)
-      console.log('hola')
-      console.log(res.data)
-  } catch(err) {
-    console.log(err.response.data)
-  }
-    setFormState(initialCardForm);
+    let res = await axios.post(`/api/creditcards`, formState)
+    console.log('hola')
+    console.log(res.data)
+    setFormState(initialCardForm)
   };
-
+  
   return (
     <><div className="home">
+      <h4>Add Your Credit Card</h4>
       <form onSubmit={ handleSubmit }>
 
         <label htmlFor="name">Credit Card Name</label>
@@ -77,7 +74,7 @@ const Home = () => {
         <input type="text" id="image" onChange={handleChange} value={formState.image}/>
 
         <label htmlFor="description">Description:</label>
-        <textarea id="description" cols="30" rows="10" onChange={handleChange} value={ formState.description }></textarea>
+        <textarea id="description" cols="15" rows="3" onChange={handleChange} value={ formState.description }></textarea>
         <button type="submit">Submit</button>
 
       </form>
