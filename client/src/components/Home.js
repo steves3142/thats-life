@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-//import { useNavigate } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import { Navigate } from 'react-router-dom'
 
 const Home = () => {
+  // let navigate = useNavigate()
+  
   const [cards, setCreditCards] = useState([])
 
   const initialCardForm = { 
@@ -17,19 +18,15 @@ const Home = () => {
 
   const [formState, setFormState] = useState(initialCardForm);
 
-  // useEffect(() => {
-  //   console.log('ciao')
-  //   const getIssues = async () => {
-  //     try{ 
-  //       let res = await axios.get('/api/creditcards')
-  //       console.log(res.data)
-  //       setIssues(res.data)
-  //     } catch(err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   getIssues();
-  // }, [])
+  const initialUpdateForm = { 
+    name: '', 
+    bank: '',
+    category: '',
+    descripiton: '',
+    image: ''
+  }
+
+  const[updatedCard, setUpdatedCard] = useState(initialUpdateForm)
 
   async function getCreditCards() {
     const res = await axios.get(`/api/creditcards`)
@@ -47,6 +44,10 @@ const Home = () => {
     setFormState({ ...formState, [event.target.id]: event.target.value });
   };
 
+  const handleChange2 = event => {
+    setUpdatedCard({...updatedCard, [event.target.id]: event.target.value }); 
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     let res = await axios.post(`/api/creditcards`, formState)
@@ -62,18 +63,26 @@ const Home = () => {
       .catch((error) => console.log(error))
   }
 
-    // const handleUpdate = (_id, card) => {
-  //   const res = await axios.put(`/api/creditcards/${_id}`, {card} )
-  //      .then((res) =>console.log(res.status))
-  //      .catch((error) => console.log(error))
+  //   const handleUpdate = async (_id) => {
+  //     let res = await axios
+  //     .put(`/api/creditcards/${_id}`, cards)
+  //     .then((res) =>console.log(res.status))
+  //     .catch((error) => console.log(error))
   // }
-  let editForm = <form onSubmit={ handleSubmit }>
-            <label htmlFor="name">Credit Card Name: </label>
-            <input type="text" id="name" onChange={handleChange} value={formState.name}/>
-            <label htmlFor="image">Image Link:</label>
-            <input type="text" id="image" onChange={handleChange} value={formState.image}/>
-            <button type="submit" >Edit</button>
-            </form>
+
+  // const handleUpdate = (card) => {
+  //   navigate(`/creditcards/`, {state: {id: card} })
+  // }
+
+  //  console.log(handleUpdate)
+  // let editForm = (card) => {<form onSubmit={ handleSubmit }>
+  //           <label htmlFor="name">Credit Card Name: </label>
+  //           <input type="text" id="name" onChange={handleChange2} value={card.name}/>
+  //           <label htmlFor="image">Image Link:</label>
+  //           <input type="text" id="image" onChange={handleChange2} value={card.image}/>
+  //           <button type="submit" onClick={() => handleUpdate(card)}>Edit</button>
+  //           </form>
+  //           }
 
   return (
     <><div className="home">
@@ -97,12 +106,13 @@ const Home = () => {
         <button type="submit">Submit</button>
 
       </form>
-      <h4>Delete A Card</h4>
-      <form onSubmit={ handleSubmit }>
+
+       <h4>Recommended Credit Cards</h4>
+      {/*<form onSubmit={ handleSubmit }>
         <label htmlFor="name">Credit Card Name: </label>
         <input type="text" id="name" onChange={handleChange} value={formState.name}/>
         <button type="submit">Submit</button>
-      </form>
+      </form> */}
 
       <div>
         {/* <form>
@@ -113,14 +123,30 @@ const Home = () => {
           </select>
         </form> */}
         <div className="card-display-box">
-          {cards.map((card, i) => (
-          <div className="credit-card" key={i}>
+          {cards.map((card) => (
+          <div className="credit-card" key={card._id}>
             <h1>{card.name}</h1>
             <img src={card.image} alt="" />
             <div className="button-div">
               <button className="removebutton" onClick={() => {handleDelete(card._id)}}>Remove</button>
               <div className="edit-options">
-                {editForm}
+                {/* {editForm} */}
+                <form>
+                  <label htmlFor="name">Credit Card Name: </label>
+                  <input type="text" id="name" onChange={handleChange2} value={updatedCard.name}/>
+                  <label htmlFor="image">Image Link:</label>
+                  <input type="text" id="image" onChange={handleChange2} value={updatedCard.image}/>
+                  <button type="submit" onClick={async () => {
+                    await axios({
+                      method: 'put',
+                      url: `/api/creditcards/${card._id}`,
+                      data: {
+                        name: updatedCard.name,
+                        image: updatedCard.image
+                      }
+                    })
+                  }}>Edit</button>
+                </form>
               </div>
             </div>
           </div>
