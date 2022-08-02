@@ -54,6 +54,7 @@ const Home = () => {
     console.log('hola')
     console.log(res.data)
     setFormState(initialCardForm)
+    getCreditCards()
   };
 
   const handleDelete = async (_id) => {
